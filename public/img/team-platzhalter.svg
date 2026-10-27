@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#dcebf6"/><stop offset="1" stop-color="#b9d3e6"/></linearGradient></defs>
+<rect width="1200" height="900" fill="url(#bg)"/>
+<g fill="#8fb1c9">
+  <circle cx="470" cy="360" r="105"/><path d="M270 900 C270 620 360 520 470 520 C580 520 670 620 670 900Z"/>
+  <circle cx="740" cy="390" r="100"/><path d="M550 900 C550 640 640 545 740 545 C840 545 930 640 930 900Z" fill="#7aa0bb"/>
+</g>
+<g transform="translate(1040 120)" fill="none" stroke="#0d2230" stroke-width="7" stroke-linejoin="round" opacity=".55">
+  <rect x="-60" y="-34" width="120" height="84" rx="14"/><circle cx="0" cy="8" r="24"/><path d="M-26 -34 l10 -18 h32 l10 18"/>
+</g>
+<text x="80" y="130" font-family="Manrope, system-ui, sans-serif" font-size="46" font-weight="800" fill="#0d2230" opacity=".7">Euer Teamfoto</text>
+<text x="80" y="185" font-family="Manrope, system-ui, sans-serif" font-size="30" fill="#0d2230" opacity=".55">z. B. ihr zwei mit Equipment vor dem Auto</text>
+</svg>

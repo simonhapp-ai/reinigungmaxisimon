@@ -1,0 +1,163 @@
+/* DIN A5 (148 × 210 mm) + 3 mm Beschnitt rundum = 154 × 216 mm Datenformat */
+@page { size: 154mm 216mm; margin: 0; }
+
+:root {
+  --ink: #0d2230;
+  --ink-2: #2f4a5a;
+  --muted: #5b6f7c;
+  --bg: #f8f6f1;
+  --line: #e2ddd2;
+  --accent: #1683d1;
+  --accent-light: #7cc4f5;
+  --accent-soft: #e2f0fa;
+  --wa: #1fb855;
+  --bleed: 3mm;
+  --safe: 11mm; /* Abstand Text zur Papierkante inkl. Beschnitt */
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  font-family: 'Manrope Variable', system-ui, sans-serif;
+  color: var(--ink);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+img { display: block; max-width: 100%; }
+p, h1, h2, h3, ul, ol { margin: 0; }
+.i { width: 1.15em; height: 1.15em; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+.page {
+  position: relative;
+  width: 154mm; height: 216mm;
+  overflow: hidden;
+  break-after: page;
+}
+.page:last-child { break-after: auto; }
+
+/* Bildschirm-Vorschau: Seiten nebeneinander, Schnittkante gestrichelt */
+@media screen {
+  body { background: #7d8a92; padding: 10mm 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 10mm; }
+  .page { box-shadow: 0 10px 40px rgb(0 0 0 / 0.35); }
+  .page::after {
+    content: ''; position: absolute; inset: var(--bleed); z-index: 10;
+    border: 0.3mm dashed rgb(255 0 128 / 0.7); pointer-events: none;
+  }
+}
+
+/* ---------- Vorderseite ---------- */
+.front { background: var(--ink); color: #fff; }
+.split { position: absolute; inset: 0 0 auto 0; height: 112mm; overflow: hidden; }
+.split img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.split-before { clip-path: polygon(0 0, 58% 0, 42% 100%, 0 100%); }
+.split::after {
+  content: ''; position: absolute; left: 50%; top: -10%; height: 120%; width: 1.2mm;
+  margin-left: -0.6mm; background: #fff; transform: rotate(12.4deg);
+}
+.tag {
+  position: absolute; bottom: 7mm; z-index: 1;
+  padding: 1.2mm 3mm; border-radius: 10mm;
+  font-size: 7.5pt; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+}
+.tag-before { left: var(--safe); background: rgb(13 34 48 / 0.8); color: #fff; }
+.tag-after { right: var(--safe); background: #fff; color: var(--ink); }
+
+.brand-badge {
+  position: absolute; top: var(--safe); left: var(--safe); z-index: 2;
+  display: flex; align-items: center; gap: 2.2mm;
+  padding: 2.2mm 4mm 2.2mm 2.6mm; border-radius: 3mm;
+  background: #fff; color: var(--ink);
+  box-shadow: 0 2mm 6mm rgb(0 0 0 / 0.25);
+}
+.brand-badge img { width: 8.5mm; height: 8.5mm; }
+.brand-badge span { display: flex; flex-direction: column; line-height: 1.1; }
+.brand-badge strong { font-size: 14pt; font-weight: 800; letter-spacing: -0.03em; }
+.brand-badge small { font-size: 6.5pt; color: var(--muted); font-weight: 600; }
+
+.front-panel {
+  position: absolute; inset: 112mm 0 0 0;
+  padding: 8mm var(--safe) var(--safe);
+  display: flex; flex-direction: column;
+}
+.eyebrow { font-size: 7pt; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-light); }
+.front h1 { margin-top: 2.5mm; font-size: 29pt; line-height: 1.05; font-weight: 800; letter-spacing: -0.025em; }
+.front h1 span { color: var(--accent-light); }
+.sub { margin-top: 3mm; font-size: 10pt; line-height: 1.4; color: rgb(255 255 255 / 0.82); }
+
+.front-cta {
+  margin-top: auto;
+  display: grid; grid-template-columns: 29mm 1fr; gap: 5mm; align-items: center;
+  padding-top: 5mm; border-top: 0.3mm solid rgb(255 255 255 / 0.18);
+}
+.qr { background: #fff; border-radius: 2.5mm; padding: 1.8mm; aspect-ratio: 1; }
+.qr svg { display: block; width: 100%; height: 100%; }
+.cta-title { font-size: 11.5pt; font-weight: 800; line-height: 1.2; }
+.cta-text { margin-top: 1.5mm; font-size: 7.8pt; line-height: 1.45; color: rgb(255 255 255 / 0.78); }
+.cta-web, .cta-phone { display: flex; align-items: center; gap: 1.6mm; font-weight: 800; }
+.cta-web { margin-top: 2.5mm; font-size: 12pt; }
+.cta-web .i { color: var(--accent-light); }
+.cta-phone { margin-top: 1.2mm; font-size: 12pt; }
+.cta-phone .i { color: var(--wa); }
+
+/* ---------- Rückseite ---------- */
+.back { background: var(--bg); }
+.back-inner { padding: var(--safe) var(--safe) 0; display: flex; flex-direction: column; gap: 7mm; }
+.back-head { display: flex; align-items: center; justify-content: space-between; gap: 4mm; }
+.brand-inline { display: flex; align-items: center; gap: 2mm; }
+.brand-inline img { width: 7.5mm; height: 7.5mm; }
+.brand-inline strong { font-size: 15pt; font-weight: 800; letter-spacing: -0.03em; }
+.back-head p { font-size: 7.5pt; color: var(--muted); font-weight: 600; text-align: right; }
+
+.services { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5mm; }
+.service {
+  display: flex; flex-direction: column;
+  background: #fff; border: 0.25mm solid var(--line); border-radius: 3mm; padding: 5mm;
+}
+.service-icon {
+  width: 8.5mm; height: 8.5mm; border-radius: 2mm; display: grid; place-items: center;
+  background: var(--accent-soft); color: #0e5f9c; font-size: 13pt; margin-bottom: 2.5mm;
+}
+.service h2 { font-size: 11pt; line-height: 1.2; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 2mm; }
+.service ul { list-style: none; padding: 0; display: grid; gap: 2mm; font-size: 8.2pt; line-height: 1.35; color: var(--ink-2); }
+.service li { position: relative; padding-left: 3.6mm; }
+.service li::before {
+  content: ''; position: absolute; left: 0; top: 0.9mm; width: 2.2mm; height: 1.2mm;
+  border-left: 0.5mm solid var(--accent); border-bottom: 0.5mm solid var(--accent); transform: rotate(-45deg);
+}
+.price { margin-top: auto; padding-top: 3mm; border-top: 0.25mm dashed var(--line); font-size: 7.5pt; line-height: 1.25; color: var(--muted); }
+.service ul + .price { margin-top: 3mm; }
+.price strong { font-size: 14pt; color: var(--ink); font-weight: 800; }
+
+.combo { padding: 3mm 3.5mm; border-radius: 2.5mm; background: var(--accent-soft); font-size: 8.5pt; line-height: 1.4; color: var(--ink-2); }
+.combo strong { color: var(--ink); }
+
+.steps-title { font-size: 11pt; font-weight: 800; margin-bottom: -1mm; }
+.steps { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; }
+.steps li { display: grid; grid-template-columns: 6mm 1fr; column-gap: 2mm; align-content: start; font-size: 7.8pt; line-height: 1.35; color: var(--muted); }
+.steps span {
+  grid-row: span 2; width: 6mm; height: 6mm; border-radius: 50%; display: grid; place-items: center;
+  background: var(--ink); color: #fff; font-weight: 800; font-size: 8pt;
+}
+.steps strong { display: block; color: var(--ink); font-size: 8.8pt; }
+
+.offer {
+  display: grid; gap: 0.8mm; padding: 3.5mm 4mm; border-radius: 3mm;
+  background: var(--accent); color: #fff;
+}
+.offer strong { font-size: 11.5pt; font-weight: 800; }
+.offer span { font-size: 8.5pt; line-height: 1.4; color: rgb(255 255 255 / 0.9); }
+
+.areas { display: flex; gap: 1.6mm; font-size: 8pt; line-height: 1.4; color: var(--muted); }
+.areas .i { color: var(--accent); margin-top: 0.2mm; }
+.areas strong { color: var(--ink); }
+
+.back-foot {
+  position: absolute; inset: auto 0 0 0;
+  display: grid; grid-template-columns: 22mm 1fr; gap: 5mm; align-items: center;
+  padding: 6mm var(--safe) var(--safe);
+  background: var(--ink); color: #fff;
+}
+.qr-small { padding: 1.4mm; border-radius: 2mm; }
+.back-foot ul { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 2.4mm 4mm; font-size: 8pt; font-weight: 700; }
+.back-foot li { display: flex; align-items: center; gap: 1.6mm; min-width: 0; }
+.back-foot .i { color: var(--accent-light); }

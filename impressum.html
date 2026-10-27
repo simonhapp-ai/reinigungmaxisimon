@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Impressum – {{name}}</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <script type="module" src="/src/main.ts"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a class="logo" href="/"><img src="/favicon.svg" alt="" width="34" height="34"><span class="logo-text"><strong>{{name}}</strong><small>Fenster · Pflaster · Terrasse</small></span></a>
+      <a class="btn btn-sm btn-ghost" href="/">Zur Startseite</a>
+    </div>
+  </header>
+  <main class="legal container narrow">
+    <h1>Impressum</h1>
+    <p class="note"><strong>Muster:</strong> Vor der Veröffentlichung vollständig ausfüllen und prüfen lassen (z.&nbsp;B. Handwerkskammer-Beratung, Impressum-Generator oder Anwalt).</p>
+
+    <h2>Angaben gemäß § 5 DDG</h2>
+    <p>{{legalName}}<br>{{street}}<br>{{zip}} {{city}}</p>
+    <p><strong>Vertreten durch die Gesellschafter:</strong><br>{{foundersFull}}</p>
+
+    <h2>Kontakt</h2>
+    <p>Telefon: <a href="{{tel}}">{{phone}}</a><br>E-Mail: <a href="{{mailto}}">{{email}}</a></p>
+
+    <h2>Umsatzsteuer</h2>
+    <p>Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG: XXX<br><em>– oder bei Kleinunternehmerregelung: Hinweis nach § 19 UStG.</em></p>
+
+    <h2>Handwerksrolle</h2>
+    <p>Gewerbeanmeldung und Eintragung bei der Handwerkskammer Hamburg (Gebäudereiniger-Handwerk, zulassungsfrei) folgen.<br>Betriebsnummer: XXX</p>
+
+    <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+    <p>{{foundersFull}}<br>{{street}}, {{zip}} {{city}}</p>
+
+    <h2>Verbraucherstreitbeilegung</h2>
+    <p>Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+  </main>
+  <footer class="footer">
+    <div class="container footer-inner">
+      <nav class="footer-nav"><a href="/">Startseite</a><a href="/datenschutz.html">Datenschutz</a></nav>
+      <p class="small">© {{year}} {{legalName}}</p>
+    </div>
+  </footer>
+</body>
+</html>
