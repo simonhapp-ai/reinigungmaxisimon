@@ -233,22 +233,12 @@ p { margin: 0 0 1em; }
 @media (max-width: 560px) { .steps { grid-template-columns: 1fr; } }
 
 /* Prices */
-.price-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(32px, 5vw, 64px); align-items: start; }
-.price-grid > div > p { color: var(--ink-2); }
+.prices > p { color: var(--ink-2); }
 .price-table { width: 100%; border-collapse: collapse; margin: 1.6rem 0 0.8rem; background: var(--surface); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
 .price-table th, .price-table td { padding: 16px 20px; border-bottom: 1px solid var(--line); text-align: left; }
 .price-table tr:last-child th, .price-table tr:last-child td { border-bottom: 0; }
 .price-table th { font-weight: 600; }
 .price-table td { text-align: right; font-weight: 800; white-space: nowrap; }
-.calc { background: var(--surface); border-radius: var(--radius); padding: 30px; box-shadow: var(--shadow); border: 1px solid var(--line); }
-.calc label { display: block; font-weight: 600; color: var(--ink-2); margin-bottom: 0.6rem; }
-.calc-row { display: flex; align-items: center; gap: 16px; }
-.calc-row input { flex: 1; accent-color: var(--accent); height: 28px; }
-.calc-row output { min-width: 4.5em; text-align: right; font-weight: 800; font-size: 1.1rem; }
-.calc-result { font-size: 1.1rem; margin: 1.2rem 0 0.4rem; color: var(--muted); }
-.calc-result strong { display: block; font-size: 2.2rem; color: var(--ink); letter-spacing: -0.02em; }
-.calc .btn { margin-top: 0.8rem; }
-@media (max-width: 860px) { .price-grid { grid-template-columns: 1fr; } }
 @media (max-width: 480px) { .price-table th, .price-table td { padding: 14px; font-size: 0.93rem; } .price-table td { white-space: normal; } }
 
 /* About */
@@ -325,6 +315,7 @@ p { margin: 0 0 1em; }
 .form-status:empty { display: none; }
 .form-status.is-error { color: #ffb3b3; }
 .form-note { margin: 0; font-size: 0.85rem; color: rgb(255 255 255 / 0.6); }
+.hp { display: none !important; }
 .form-note a { color: #7cc4f5; }
 
 /* Footer */

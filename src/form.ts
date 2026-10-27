@@ -65,9 +65,13 @@ export function initForm(form: HTMLFormElement) {
   const serviceError = form.querySelector<HTMLElement>('[data-error-for="service"]')
   const status = form.querySelector<HTMLElement>('.form-status')
   const mailButton = form.querySelector<HTMLButtonElement>('[data-submit-mail]')
-  const useEndpoint = config.formEndpoint !== ''
+  const formNote = form.querySelector<HTMLElement>('[data-form-note]')
+  const useEndpoint = config.form.accessKey !== ''
 
-  if (useEndpoint && mailButton) mailButton.lastChild!.textContent = ' Anfrage absenden'
+  if (useEndpoint) {
+    if (mailButton) mailButton.lastChild!.textContent = ' Anfrage absenden'
+    if (formNote) formNote.textContent = 'Per WhatsApp können Sie direkt Fotos anhängen. „Anfrage absenden“ schickt Ihre Angaben direkt an unser Postfach.'
+  }
 
   const update = () => {
     const r = read(form)
@@ -117,12 +121,22 @@ export function initForm(form: HTMLFormElement) {
     }
 
     try {
-      const res = await fetch(config.formEndpoint, {
+      const res = await fetch(config.form.endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ ...r, services: r.services.map((s) => serviceLabels[s]).join(', '), text }),
+        body: JSON.stringify({
+          access_key: config.form.accessKey,
+          subject: `Neue Anfrage: ${r.services.map((s) => serviceLabels[s]).join(', ')} – ${r.location}`,
+          from_name: `${config.name} Website`,
+          name: r.name,
+          // Bei einer E-Mail-Adresse kann man in Gmail direkt auf die Anfrage antworten.
+          ...(r.contact.includes('@') ? { email: r.contact } : { telefon: r.contact }),
+          nachricht: text,
+          botcheck: (form.elements.namedItem('botcheck') as HTMLInputElement | null)?.checked ?? false,
+        }),
       })
-      if (!res.ok) throw new Error(String(res.status))
+      const result = (await res.json().catch(() => ({}))) as { success?: boolean }
+      if (!res.ok || result.success === false) throw new Error(String(res.status))
       form.reset()
       update()
       setStatus(`Danke! Wir melden uns innerhalb von ${config.responseTime}.`)

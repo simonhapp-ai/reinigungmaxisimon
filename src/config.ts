@@ -41,8 +41,14 @@ export const config = {
     team: '/img/team-platzhalter.svg',
   },
 
-  /** Optional: URL eines Formular-Dienstes (z. B. Formspree). Leer = Versand per WhatsApp / E-Mail. */
-  formEndpoint: '',
+  /**
+   * Direkter Versand des Formulars per E-Mail über web3forms.com (kostenlos).
+   * Solange accessKey leer ist, öffnet „Per E-Mail senden“ das E-Mail-Programm des Kunden.
+   */
+  form: {
+    endpoint: 'https://api.web3forms.com/submit',
+    accessKey: '', // Access Key von web3forms.com – ist öffentlich und darf im Code stehen
+  },
 
   flyer: {
     offerTitle: 'Neu in Ihrer Nachbarschaft',
@@ -97,6 +103,9 @@ export function htmlTokens(): Record<string, string> {
     responseTime: config.responseTime,
     windowPrice: euro(config.prices.perWindow),
     vatNote: config.prices.vatNote,
+    formPrivacy: config.form.accessKey
+      ? 'Wenn Sie über „Anfrage absenden“ schicken, werden Ihre Angaben über den Formular-Dienst Web3Forms an unser E-Mail-Postfach weitergeleitet. Dabei können Daten auch in Drittländer (z. B. die USA) übermittelt werden. Per WhatsApp-Button werden Ihre Angaben dagegen nur in eine Nachricht übernommen, die Sie selbst absenden.'
+      : 'Das Formular speichert keine Daten auf unserem Server: Ihre Angaben werden in eine WhatsApp-Nachricht bzw. E-Mail übernommen, die Sie selbst absenden.',
     districts: config.areas.flatMap((a) => a.districts).join(', '),
     areasHtml: config.areas
       .map(

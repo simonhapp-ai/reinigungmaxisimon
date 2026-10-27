@@ -219,8 +219,8 @@
 
     <!-- PREISE -->
     <section class="section section-tint" id="preise">
-      <div class="container price-grid">
-        <div>
+      <div class="container narrow">
+        <div class="prices">
           <p class="eyebrow">Preise</p>
           <h2>Fair, klar und immer vorher abgesprochen</h2>
           <p>Für Standardfenster gilt ein fester Preis pro Fenster. Bei allem anderen – Sonderformen, Wintergärten, Einfahrten oder Terrassen – hängt der Aufwand von Größe, Material und Verschmutzung ab. Den Preis vereinbaren wir deshalb immer mit Ihnen, bevor wir anfangen.</p>
@@ -233,17 +233,6 @@
             </tbody>
           </table>
           <p class="small">{{vatNote}}</p>
-        </div>
-        <div class="calc" data-calc>
-          <h3>Fenster-Rechner</h3>
-          <label for="calc-windows">Wie viele Fenster hat Ihr Haus?</label>
-          <div class="calc-row">
-            <input id="calc-windows" type="range" min="1" max="60" step="1" value="15">
-            <output for="calc-windows" data-calc-count>15 Fenster</output>
-          </div>
-          <p class="calc-result">ca. <strong data-calc-result>–</strong></p>
-          <p class="small">Richtwert für Standardfenster. Terrassentüren, Sonderformen und Außenflächen sprechen wir vorher mit Ihnen ab.</p>
-          <a class="btn btn-primary btn-block" href="#kontakt" data-calc-cta>Termin anfragen</a>
         </div>
       </div>
     </section>
@@ -301,10 +290,6 @@
           <details>
             <summary>Wie oft sollten Fenster gereinigt werden?</summary>
             <p>Bei den meisten Häusern sind zwei bis vier Reinigungen im Jahr ideal. Auf Wunsch planen wir feste Termine – Sie müssen sich um nichts kümmern.</p>
-          </details>
-          <details>
-            <summary>Wie wird bezahlt?</summary>
-            <p>Sie erhalten nach der Reinigung eine Rechnung und bezahlen bequem per Überweisung.</p>
           </details>
         </div>
       </div>
@@ -401,7 +386,8 @@
             <button class="btn btn-light-ghost" type="submit" value="email" data-submit-mail><svg class="i"><use href="#i-mail"/></svg> Per E-Mail senden</button>
           </div>
           <p class="form-status" role="status" aria-live="polite"></p>
-          <p class="form-note">Ihre Angaben landen direkt als Nachricht in WhatsApp oder Ihrem E-Mail-Programm – Sie können vor dem Absenden alles prüfen und Fotos anhängen. Mehr in der <a href="/datenschutz.html">Datenschutzerklärung</a>.</p>
+          <input class="hp" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <p class="form-note"><span data-form-note>Ihre Angaben landen direkt als Nachricht in WhatsApp oder Ihrem E-Mail-Programm – Sie können vor dem Absenden alles prüfen und Fotos anhängen.</span> Mehr in der <a href="/datenschutz.html">Datenschutzerklärung</a>.</p>
         </form>
       </div>
     </section>
