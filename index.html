@@ -88,17 +88,14 @@
             <li><svg class="i"><use href="#i-check"/></svg> Antwort innerhalb von {{responseTime}}</li>
           </ul>
         </div>
-        <div class="hero-visual">
-          <figure class="ba" data-ba>
-            <img src="{{img_heroAfter}}" alt="Gereinigte Pflasterfläche" width="1200" height="800" fetchpriority="high">
-            <img class="ba-before" src="{{img_heroBefore}}" alt="Vermooste Pflasterfläche vor der Reinigung" width="1200" height="800">
-            <span class="ba-tag ba-tag-before">Vorher</span>
-            <span class="ba-tag ba-tag-after">Nachher</span>
-            <span class="ba-handle" aria-hidden="true"></span>
-            <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Vorher-Nachher-Vergleich verschieben">
-          </figure>
-          <p class="ba-hint">↔ Ziehen zum Vergleichen · Illustration</p>
-        </div>
+        <figure class="team" id="ueber-uns">
+          <img class="team-img" src="{{img_team}}" alt="{{founders}} von {{name}}" width="1200" height="900" fetchpriority="high">
+          <figcaption class="team-card">
+            <p class="team-hello">Hallo, wir sind {{founders}}.</p>
+            <p>Zwei junge Gründer aus Hamburg mit einem klaren Anspruch: pünktlich, ehrlich in der Beratung und Ergebnisse, die man sieht. Jeden Auftrag erledigen wir persönlich – und stehen mit unserem Namen dafür ein.</p>
+            <a class="team-link" data-instagram href="{{instagramUrl}}" target="_blank" rel="noopener"><svg class="i"><use href="#i-instagram"/></svg> Folgt unserem Weg auf Instagram</a>
+          </figcaption>
+        </figure>
       </div>
     </section>
 
@@ -237,20 +234,6 @@
       </div>
     </section>
 
-    <!-- ÜBER UNS -->
-    <section class="section" id="ueber-uns">
-      <div class="container about">
-        <img class="about-img" src="{{img_team}}" alt="Das Team von {{name}}" width="1200" height="900" loading="lazy">
-        <div>
-          <p class="eyebrow">Über uns</p>
-          <h2>Zwei Hamburger, ein Anspruch</h2>
-          <p>Wir sind {{founders}} – zwei junge Gründer aus Hamburg. Mit {{name}} wollen wir zeigen, dass ein Reinigungsbetrieb anders funktionieren kann: pünktlich, ehrlich in der Beratung, mit klaren Preisen und Ergebnissen, die man sieht.</p>
-          <p>Noch übernehmen wir jeden Auftrag selbst – und stehen persönlich dafür gerade.<span data-instagram> Wenn Sie sehen wollen, wie wir unser Unternehmen von null aufbauen, folgen Sie uns auf Instagram.</span></p>
-          <a class="btn btn-ghost" data-instagram href="{{instagramUrl}}" target="_blank" rel="noopener"><svg class="i"><use href="#i-instagram"/></svg> {{instagram}}</a>
-        </div>
-      </div>
-    </section>
-
     <!-- EINSATZGEBIET -->
     <section class="section section-tint" id="gebiet">
       <div class="container">
@@ -317,6 +300,7 @@
               <label class="choice"><input type="checkbox" name="service" value="fenster"><span>Fenster & Glas</span></label>
               <label class="choice"><input type="checkbox" name="service" value="pflaster"><span>Pflaster & Einfahrt</span></label>
               <label class="choice"><input type="checkbox" name="service" value="terrasse"><span>Terrasse</span></label>
+              <label class="choice"><input type="checkbox" name="service" value="kombi"><span>Kombi: Glas & Einfahrt</span></label>
             </div>
             <p class="field-error" data-error-for="service" hidden>Bitte wählen Sie mindestens eine Leistung.</p>
           </fieldset>

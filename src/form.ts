@@ -5,6 +5,7 @@ const serviceLabels: Record<Service, string> = {
   fenster: 'Fenster & Glas',
   pflaster: 'Pflaster & Einfahrt',
   terrasse: 'Terrasse',
+  kombi: 'Kombi: Glas & Einfahrt',
 }
 
 interface Request {
@@ -36,8 +37,9 @@ function read(form: HTMLFormElement): Request {
   }
 }
 
-const needsArea = (r: Pick<Request, 'services'>) => r.services.includes('pflaster') || r.services.includes('terrasse')
-const needsWindows = (r: Pick<Request, 'services'>) => r.services.includes('fenster')
+// Die Kombi umfasst beides – dann fragen wir Fensteranzahl und Fläche ab.
+const needsArea = (r: Pick<Request, 'services'>) => ['pflaster', 'terrasse', 'kombi'].some((s) => r.services.includes(s as Service))
+const needsWindows = (r: Pick<Request, 'services'>) => r.services.includes('fenster') || r.services.includes('kombi')
 
 export function buildMessage(r: Request, via: 'whatsapp' | 'email'): string {
   const lines = [

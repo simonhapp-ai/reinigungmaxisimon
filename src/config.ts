@@ -32,8 +32,8 @@ export const config = {
   ],
 
   images: {
-    heroBefore: '/img/pflaster-vorher.jpg',
-    heroAfter: '/img/pflaster-nachher.jpg',
+    pavingBefore: '/img/pflaster-vorher.jpg', // Flyer-Vorderseite
+    pavingAfter: '/img/pflaster-nachher.jpg',
     windowBefore: '/img/fenster-vorher.jpg',
     windowAfter: '/img/fenster-nachher.jpg',
     terraceBefore: '/img/terrasse-vorher.jpg',

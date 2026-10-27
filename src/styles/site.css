@@ -124,13 +124,21 @@ p { margin: 0 0 1em; }
 .trust { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.6rem 1.4rem; font-weight: 600; font-size: 0.95rem; color: var(--ink-2); }
 .trust li { display: inline-flex; align-items: center; gap: 0.4em; }
 .trust .i { color: var(--wa); stroke-width: 2.6; }
-.hero-visual .ba { border-radius: 24px; box-shadow: var(--shadow); aspect-ratio: 5 / 4; }
-.ba-hint { margin: 0.8rem 0 0; text-align: center; font-size: 0.85rem; color: var(--muted); }
+.hero-grid > * { min-width: 0; }
 
-@media (max-width: 900px) {
-  .hero-grid { grid-template-columns: 1fr; }
-  .hero-visual .ba { aspect-ratio: 4 / 3; }
+/* Team im Hero */
+.team { margin: 0; }
+.team-img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 24px; box-shadow: var(--shadow); }
+.team-card {
+  position: relative; margin: -56px 20px 0; padding: 20px 22px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow);
 }
+.team-hello { margin: 0 0 0.35rem; font-weight: 800; font-size: 1.15rem; letter-spacing: -0.01em; }
+.team-card p:not(.team-hello) { margin: 0; color: var(--ink-2); font-size: 0.97rem; }
+.team-link { display: inline-flex; align-items: center; gap: 0.4em; margin-top: 0.8rem; font-weight: 700; text-decoration: none; }
+
+@media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .team-card { margin: -40px 12px 0; padding: 16px 18px; } }
 
 /* Before / after slider */
 .ba {
@@ -240,12 +248,6 @@ p { margin: 0 0 1em; }
 .price-table th { font-weight: 600; }
 .price-table td { text-align: right; font-weight: 800; white-space: nowrap; }
 @media (max-width: 480px) { .price-table th, .price-table td { padding: 14px; font-size: 0.93rem; } .price-table td { white-space: normal; } }
-
-/* About */
-.about { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 64px); align-items: center; }
-.about-img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 24px; box-shadow: var(--shadow); }
-.about p { color: var(--ink-2); }
-@media (max-width: 860px) { .about { grid-template-columns: 1fr; } }
 
 /* Areas */
 .areas { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
