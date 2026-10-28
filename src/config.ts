@@ -22,16 +22,16 @@ export const config = {
   responseTime: '24 Stunden',
 
   prices: {
-    perWindow: 5, // € pro Standardfenster – alles andere nach Absprache
-    vatNote: 'Alle Preise sind Endpreise.',
+    perWindow: 4, // € pro Standardfenster – alles andere nach Absprache
   },
 
   areas: [
-    { region: 'Elbvororte', districts: ['Blankenese', 'Nienstedten', 'Othmarschen', 'Rissen'] },
-    { region: 'Alstertal & Walddörfer', districts: ['Volksdorf', 'Wellingsbüttel', 'Poppenbüttel', 'Sasel'] },
+    { region: 'Elbvororte', districts: ['Othmarschen', 'Nienstedten', 'Blankenese', 'Rissen'] },
+    { region: 'Flottbek & Umgebung', districts: ['Groß Flottbek', 'Klein Flottbek', 'Hochkamp', 'Iserbrook', 'Sülldorf'] },
   ],
 
   images: {
+    hero: '/img/arbeit-platzhalter.svg', // Foto beim Arbeiten, am besten Querformat
     pavingBefore: '/img/pflaster-vorher.jpg', // Flyer-Vorderseite
     pavingAfter: '/img/pflaster-nachher.jpg',
     windowBefore: '/img/fenster-vorher.jpg',
@@ -39,15 +39,6 @@ export const config = {
     terraceBefore: '/img/terrasse-vorher.jpg',
     terraceAfter: '/img/terrasse-nachher.jpg',
     team: '/img/team-platzhalter.svg',
-  },
-
-  /**
-   * Direkter Versand des Formulars per E-Mail über web3forms.com (kostenlos).
-   * Solange accessKey leer ist, öffnet „Per E-Mail senden“ das E-Mail-Programm des Kunden.
-   */
-  form: {
-    endpoint: 'https://api.web3forms.com/submit',
-    accessKey: '', // Access Key von web3forms.com – ist öffentlich und darf im Code stehen
   },
 
   flyer: {
@@ -102,10 +93,6 @@ export function htmlTokens(): Record<string, string> {
     city: config.address.city,
     responseTime: config.responseTime,
     windowPrice: euro(config.prices.perWindow),
-    vatNote: config.prices.vatNote,
-    formPrivacy: config.form.accessKey
-      ? 'Wenn Sie über „Anfrage absenden“ schicken, werden Ihre Angaben über den Formular-Dienst Web3Forms an unser E-Mail-Postfach weitergeleitet. Dabei können Daten auch in Drittländer (z. B. die USA) übermittelt werden. Per WhatsApp-Button werden Ihre Angaben dagegen nur in eine Nachricht übernommen, die Sie selbst absenden.'
-      : 'Das Formular speichert keine Daten auf unserem Server: Ihre Angaben werden in eine WhatsApp-Nachricht bzw. E-Mail übernommen, die Sie selbst absenden.',
     districts: config.areas.flatMap((a) => a.districts).join(', '),
     areasHtml: config.areas
       .map(

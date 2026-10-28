@@ -1,6 +1,9 @@
 import { config, whatsappUrl } from './config.ts'
 import { windowsPrice, type Service } from './estimate.ts'
 
+/** Vercel-Funktion in api/anfrage.ts – schickt die Anfrage per E-Mail an euer Postfach. */
+const ENDPOINT = '/api/anfrage'
+
 const serviceLabels: Record<Service, string> = {
   fenster: 'Fenster & Glas',
   pflaster: 'Pflaster & Einfahrt',
@@ -15,7 +18,8 @@ interface Request {
   area?: number
   name: string
   location: string
-  contact: string
+  email: string
+  phone: string
   timing: string
   message: string
 }
@@ -31,7 +35,8 @@ function read(form: HTMLFormElement): Request {
     area: positive('area'),
     name: text('name'),
     location: text('location'),
-    contact: text('contact'),
+    email: text('email'),
+    phone: text('phone'),
     timing: text('timing'),
     message: text('message'),
   }
@@ -40,8 +45,10 @@ function read(form: HTMLFormElement): Request {
 // Die Kombi umfasst beides – dann fragen wir Fensteranzahl und Fläche ab.
 const needsArea = (r: Pick<Request, 'services'>) => ['pflaster', 'terrasse', 'kombi'].some((s) => r.services.includes(s as Service))
 const needsWindows = (r: Pick<Request, 'services'>) => r.services.includes('fenster') || r.services.includes('kombi')
+const isEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)
 
-export function buildMessage(r: Request, via: 'whatsapp' | 'email'): string {
+/** Fertige Nachricht für den WhatsApp-Notfall-Link, falls der Versand scheitert. */
+export function buildMessage(r: Request): string {
   const lines = [
     `Hallo ${config.name}, ich hätte gern ein Angebot.\n`,
     `Leistung: ${r.services.map((s) => serviceLabels[s]).join(', ')}`,
@@ -51,9 +58,9 @@ export function buildMessage(r: Request, via: 'whatsapp' | 'email'): string {
     `Ort: ${r.location}`,
     `Zeitraum: ${r.timing}`,
     `Name: ${r.name}`,
-    r.contact ? `Kontakt: ${r.contact}` : '',
+    `E-Mail: ${r.email}`,
+    r.phone ? `Telefon: ${r.phone}` : '',
     r.message ? `\nNachricht: ${r.message}` : '',
-    via === 'whatsapp' ? '\nFotos schicke ich gleich hier im Chat.' : '',
   ]
   return lines.filter(Boolean).join('\n')
 }
@@ -66,14 +73,7 @@ export function initForm(form: HTMLFormElement) {
   const estimateNote = form.querySelector<HTMLElement>('[data-estimate-note]')
   const serviceError = form.querySelector<HTMLElement>('[data-error-for="service"]')
   const status = form.querySelector<HTMLElement>('.form-status')
-  const mailButton = form.querySelector<HTMLButtonElement>('[data-submit-mail]')
-  const formNote = form.querySelector<HTMLElement>('[data-form-note]')
-  const useEndpoint = config.form.accessKey !== ''
-
-  if (useEndpoint) {
-    if (mailButton) mailButton.lastChild!.textContent = ' Anfrage absenden'
-    if (formNote) formNote.textContent = 'Per WhatsApp können Sie direkt Fotos anhängen. „Anfrage absenden“ schickt Ihre Angaben direkt an unser Postfach.'
-  }
+  const submit = form.querySelector<HTMLButtonElement>('button[type="submit"]')
 
   const update = () => {
     const r = read(form)
@@ -101,51 +101,39 @@ export function initForm(form: HTMLFormElement) {
 
   form.addEventListener('submit', async (event) => {
     event.preventDefault()
-    const via = (event.submitter as HTMLButtonElement | null)?.value === 'email' ? 'email' : 'whatsapp'
     const r = read(form)
-    if (!validate(form, r, via === 'email' && useEndpoint)) return
+    if (!validate(r)) return
 
-    const text = buildMessage(r, via)
     setStatus('')
-
-    if (via === 'whatsapp') {
-      const url = whatsappUrl(text)
-      if (!window.open(url, '_blank', 'noopener')) window.location.href = url
-      setStatus('WhatsApp wurde geöffnet – bitte dort noch auf Senden tippen.')
-      return
-    }
-
-    if (!useEndpoint) {
-      const subject = `Angebotsanfrage – ${r.location}`
-      window.location.href = `mailto:${config.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`
-      setStatus('Ihr E-Mail-Programm wurde geöffnet – bitte dort noch auf Senden klicken.')
-      return
-    }
-
+    setSending(true)
     try {
-      const res = await fetch(config.form.endpoint, {
+      const res = await fetch(ENDPOINT, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          access_key: config.form.accessKey,
-          subject: `Neue Anfrage: ${r.services.map((s) => serviceLabels[s]).join(', ')} – ${r.location}`,
-          from_name: `${config.name} Website`,
-          name: r.name,
-          // Bei einer E-Mail-Adresse kann man in Gmail direkt auf die Anfrage antworten.
-          ...(r.contact.includes('@') ? { email: r.contact } : { telefon: r.contact }),
-          nachricht: text,
-          botcheck: (form.elements.namedItem('botcheck') as HTMLInputElement | null)?.checked ?? false,
+          ...r,
+          services: r.services.map((s) => serviceLabels[s]),
+          windows: needsWindows(r) ? r.windows : undefined,
+          area: needsArea(r) ? r.area : undefined,
+          website: (form.elements.namedItem('website') as HTMLInputElement | null)?.value ?? '',
         }),
       })
-      const result = (await res.json().catch(() => ({}))) as { success?: boolean }
-      if (!res.ok || result.success === false) throw new Error(String(res.status))
+      if (!res.ok) throw new Error(String(res.status))
       form.reset()
       update()
-      setStatus(`Danke! Wir melden uns innerhalb von ${config.responseTime}.`)
+      setStatus(`Danke! Ihre Anfrage ist bei uns angekommen. Wir melden uns innerhalb von ${config.responseTime}.`)
     } catch {
-      setStatus('Das hat leider nicht geklappt. Bitte schreiben Sie uns direkt per WhatsApp oder E-Mail.', true)
+      showFallback(r)
+    } finally {
+      setSending(false)
     }
   })
+
+  function setSending(sending: boolean) {
+    if (!submit) return
+    submit.disabled = sending
+    submit.lastChild!.textContent = sending ? ' Wird gesendet …' : ' Anfrage absenden'
+  }
 
   function setStatus(message: string, isError = false) {
     if (!status) return
@@ -153,26 +141,39 @@ export function initForm(form: HTMLFormElement) {
     status.classList.toggle('is-error', isError)
   }
 
-  function validate(form: HTMLFormElement, r: Request, contactRequired: boolean): boolean {
+  /** Versand gescheitert: Anfrage nicht verlieren, sondern als fertige WhatsApp-Nachricht anbieten. */
+  function showFallback(r: Request) {
+    if (!status) return
+    setStatus('Das hat leider nicht geklappt. Sie können uns Ihre Anfrage stattdessen ', true)
+    const wa = Object.assign(document.createElement('a'), {
+      href: whatsappUrl(buildMessage(r)),
+      target: '_blank',
+      rel: 'noopener',
+      textContent: 'per WhatsApp schicken',
+    })
+    const mail = Object.assign(document.createElement('a'), { href: `mailto:${config.email}`, textContent: config.email })
+    status.append(wa, ' oder an ', mail, ' schreiben.')
+  }
+
+  function validate(r: Request): boolean {
     const invalid: HTMLElement[] = []
 
     if (serviceError) serviceError.hidden = r.services.length > 0
     if (!r.services.length) invalid.push(form.querySelector<HTMLInputElement>('[name="service"]')!)
 
-    const required: [keyof Request, boolean][] = [
-      ['name', true],
-      ['location', true],
-      ['contact', contactRequired],
+    const checks: [keyof Request, boolean][] = [
+      ['name', !!r.name],
+      ['location', !!r.location],
+      ['email', isEmail(r.email)],
     ]
-    for (const [key, isRequired] of required) {
+    for (const [key, ok] of checks) {
       const input = form.elements.namedItem(key) as HTMLInputElement
-      const bad = isRequired && !r[key]
-      input.classList.toggle('is-invalid', bad)
-      if (bad) invalid.push(input)
+      input.classList.toggle('is-invalid', !ok)
+      if (!ok) invalid.push(input)
     }
 
     invalid[0]?.focus()
-    if (invalid.length) setStatus('Bitte füllen Sie die markierten Felder aus.', true)
+    if (invalid.length) setStatus('Bitte füllen Sie die markierten Felder aus (E-Mail im Format name@beispiel.de).', true)
     return invalid.length === 0
   }
 

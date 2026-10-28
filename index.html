@@ -57,7 +57,6 @@
       <nav class="nav" id="nav" aria-label="Hauptnavigation">
         <a href="#leistungen">Leistungen</a>
         <a href="#ergebnisse">Vorher/Nachher</a>
-        <a href="#preise">Preise</a>
         <a href="#ueber-uns">Über uns</a>
         <a href="#faq">FAQ</a>
         <a class="btn btn-sm btn-nav" href="#kontakt">Angebot anfragen <svg class="i"><use href="#i-arrow"/></svg></a>
@@ -71,31 +70,37 @@
   <main id="top">
     <!-- HERO -->
     <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <p class="eyebrow">Fenster- & Außenflächenreinigung · Hamburg</p>
+      <div class="container">
+        <img class="hero-img" src="{{img_hero}}" alt="{{founders}} bei der Arbeit" width="1600" height="700" fetchpriority="high">
+        <div class="hero-grid">
           <h1>Klare Fenster.<br><span class="accent">Saubere Einfahrten.</span></h1>
-          <p class="lead">Wir reinigen Fenster, Wintergärten, Pflaster, Einfahrten und Terrassen an Ein- und Zweifamilienhäusern – gründlich, pünktlich und zum Festpreis, den Sie vorher kennen.</p>
-          <div class="hero-cta">
-            <a class="btn btn-wa" href="{{whatsappUrl}}" target="_blank" rel="noopener" data-wa>
-              <svg class="i"><use href="#i-wa"/></svg> Fotos per WhatsApp schicken
-            </a>
-            <a class="btn btn-ghost" href="#kontakt">Anfrage-Formular <svg class="i"><use href="#i-arrow"/></svg></a>
+          <div class="hero-copy">
+            <p class="lead">Wir reinigen Fenster, Wintergärten, Pflaster, Einfahrten und Terrassen. Gründlich, pünktlich und zum Festpreis, den Sie vorher kennen.</p>
+            <div class="hero-cta">
+              <a class="btn btn-wa" href="{{whatsappUrl}}" target="_blank" rel="noopener" data-wa>
+                <svg class="i"><use href="#i-wa"/></svg> Fotos per WhatsApp schicken
+              </a>
+              <a class="btn btn-ghost" href="#kontakt">Anfrage-Formular <svg class="i"><use href="#i-arrow"/></svg></a>
+            </div>
+            <ul class="trust">
+              <li><svg class="i"><use href="#i-check"/></svg> Kostenloses Angebot</li>
+              <li><svg class="i"><use href="#i-check"/></svg> Festpreis vor Arbeitsbeginn</li>
+              <li><svg class="i"><use href="#i-check"/></svg> Antwort innerhalb von {{responseTime}}</li>
+            </ul>
           </div>
-          <ul class="trust">
-            <li><svg class="i"><use href="#i-check"/></svg> Kostenloses Angebot</li>
-            <li><svg class="i"><use href="#i-check"/></svg> Festpreis vor Arbeitsbeginn</li>
-            <li><svg class="i"><use href="#i-check"/></svg> Antwort innerhalb von {{responseTime}}</li>
-          </ul>
         </div>
-        <figure class="team" id="ueber-uns">
-          <img class="team-img" src="{{img_team}}" alt="{{founders}} von {{name}}" width="1200" height="900" fetchpriority="high">
-          <figcaption class="team-card">
-            <p class="team-hello">Hallo, wir sind {{founders}}.</p>
-            <p>Zwei junge Gründer aus Hamburg mit einem klaren Anspruch: pünktlich, ehrlich in der Beratung und Ergebnisse, die man sieht. Jeden Auftrag erledigen wir persönlich – und stehen mit unserem Namen dafür ein.</p>
-            <a class="team-link" data-instagram href="{{instagramUrl}}" target="_blank" rel="noopener"><svg class="i"><use href="#i-instagram"/></svg> Folgt unserem Weg auf Instagram</a>
-          </figcaption>
-        </figure>
+      </div>
+    </section>
+
+    <!-- ÜBER UNS -->
+    <section class="section section-blue" id="ueber-uns">
+      <div class="container team">
+        <img class="team-img" src="{{img_team}}" alt="{{founders}} von {{name}}" width="1200" height="900" loading="lazy">
+        <div class="team-card">
+          <p class="team-hello">Hallo, wir sind {{founders}}.</p>
+          <p>Zwei junge Gründer aus Hamburg mit einem klaren Anspruch: pünktlich, ehrlich in der Beratung und Ergebnisse, die man sieht. Jeden Auftrag erledigen wir persönlich – und stehen mit unserem Namen dafür ein.</p>
+          <a class="team-link" data-instagram href="{{instagramUrl}}" target="_blank" rel="noopener"><svg class="i"><use href="#i-instagram"/></svg> Folgt unserem Weg auf Instagram</a>
+        </div>
       </div>
     </section>
 
@@ -113,12 +118,12 @@
             <h3>Fenster- & Glasreinigung</h3>
             <p>Streifenfrei klare Scheiben – innen und außen. Auf Wunsch im festen Rhythmus, damit Sie nie wieder daran denken müssen.</p>
             <ul class="checks">
-              <li>Fenster & Terrassentüren innen und außen</li>
-              <li>Rahmen, Falze und Fensterbänke</li>
               <li>Wintergärten, Glasgeländer & Vordächer</li>
               <li>Regelmäßige Termine, z.&nbsp;B. alle 3 Monate</li>
+              <li>Fenster & Terrassentüren innen und außen</li>
+              <li>Rahmen nach Absprache</li>
+              <li><strong>{{windowPrice}} pro Standardfenster</strong></li>
             </ul>
-            <p class="price-tag"><strong>{{windowPrice}}</strong> pro Standardfenster</p>
           </article>
           <article class="card">
             <div class="card-icon"><svg class="i"><use href="#i-paving"/></svg></div>
@@ -183,7 +188,7 @@
     </section>
 
     <!-- ABLAUF -->
-    <section class="section" id="ablauf">
+    <section class="section section-blue" id="ablauf">
       <div class="container">
         <header class="section-head">
           <p class="eyebrow">So einfach geht's</p>
@@ -192,8 +197,8 @@
         <ol class="steps">
           <li>
             <span class="step-icon"><svg class="i"><use href="#i-camera"/></svg></span>
-            <h3>Fotos schicken</h3>
-            <p>Ein paar Handyfotos per WhatsApp – oder kurz das Formular ausfüllen.</p>
+            <h3>Angebot erhalten</h3>
+            <p>Einfach ein paar Bilder per WhatsApp, E-Mail oder über das Anfrageformular schicken oder einen Besichtigungstermin vereinbaren – alles unverbindlich.</p>
           </li>
           <li>
             <span class="step-icon"><svg class="i"><use href="#i-euro"/></svg></span>
@@ -214,28 +219,8 @@
       </div>
     </section>
 
-    <!-- PREISE -->
-    <section class="section section-tint" id="preise">
-      <div class="container narrow">
-        <div class="prices">
-          <p class="eyebrow">Preise</p>
-          <h2>Fair, klar und immer vorher abgesprochen</h2>
-          <p>Für Standardfenster gilt ein fester Preis pro Fenster. Bei allem anderen – Sonderformen, Wintergärten, Einfahrten oder Terrassen – hängt der Aufwand von Größe, Material und Verschmutzung ab. Den Preis vereinbaren wir deshalb immer mit Ihnen, bevor wir anfangen.</p>
-          <table class="price-table">
-            <tbody>
-              <tr><th scope="row">Standardfenster</th><td>{{windowPrice}} pro Fenster</td></tr>
-              <tr><th scope="row">Sonderfenster, Wintergärten & Glasflächen</th><td>nach Absprache</td></tr>
-              <tr><th scope="row">Pflaster, Einfahrt & Terrasse</th><td>nach Absprache</td></tr>
-              <tr><th scope="row">Besichtigung & Angebot</th><td>kostenlos</td></tr>
-            </tbody>
-          </table>
-          <p class="small">{{vatNote}}</p>
-        </div>
-      </div>
-    </section>
-
     <!-- EINSATZGEBIET -->
-    <section class="section section-tint" id="gebiet">
+    <section class="section" id="gebiet">
       <div class="container">
         <header class="section-head">
           <p class="eyebrow">Einsatzgebiet</p>
@@ -247,7 +232,7 @@
     </section>
 
     <!-- FAQ -->
-    <section class="section" id="faq">
+    <section class="section section-blue" id="faq">
       <div class="container narrow">
         <header class="section-head">
           <p class="eyebrow">Häufige Fragen</p>
@@ -260,15 +245,11 @@
           </details>
           <details>
             <summary>Was kostet die Reinigung?</summary>
-            <p>Standardfenster reinigen wir für {{windowPrice}} pro Fenster. Für Sonderformen, Wintergärten, Einfahrten und Terrassen hängt der Aufwand stark von Größe, Material und Verschmutzung ab – den Preis sprechen wir deshalb immer vorher mit Ihnen ab. Es gibt keine Überraschungen auf der Rechnung.</p>
+            <p>Standardfenster reinigen wir für {{windowPrice}} pro Fenster, wobei der Preis je nach Größe variiert. Wintergärten, Einfahrten, Terrassen und sonstige Außenflächen hängen natürlich von Aufwand, Größe und Material ab. Einfach nachfragen und ein unverbindliches Angebot einholen – es gibt keine Überraschungen auf der Rechnung.</p>
           </details>
           <details>
             <summary>Kann mein Pflaster bei der Reinigung beschädigt werden?</summary>
             <p>Nicht jede Oberfläche verträgt jedes Verfahren. Deshalb prüfen wir vorab Material und Zustand und testen an einer unauffälligen Stelle. Wenn wir von einer Reinigung abraten würden, sagen wir Ihnen das ehrlich.</p>
-          </details>
-          <details>
-            <summary>Muss ich beim Termin zu Hause sein?</summary>
-            <p>Für Außenarbeiten nicht unbedingt – wir brauchen nur Zugang zum Grundstück sowie einen Wasser- und Stromanschluss. Für die Fensterreinigung innen sprechen wir den Termin mit Ihnen ab.</p>
           </details>
           <details>
             <summary>Wie oft sollten Fenster gereinigt werden?</summary>
@@ -284,7 +265,7 @@
         <div class="contact-intro">
           <p class="eyebrow">Kontakt</p>
           <h2>Ihr kostenloses Angebot</h2>
-          <p>Am schnellsten geht's per WhatsApp: Schicken Sie uns ein paar Fotos – wir melden uns innerhalb von {{responseTime}} mit einem Festpreis.</p>
+          <p>Füllen Sie einfach das Formular aus oder schicken Sie uns ein paar Fotos per WhatsApp – wir melden uns innerhalb von {{responseTime}} mit einem Angebot.</p>
           <ul class="contact-list">
             <li><a href="{{whatsappUrl}}" target="_blank" rel="noopener" data-wa><svg class="i"><use href="#i-wa"/></svg> WhatsApp schreiben</a></li>
             <li><a href="{{tel}}"><svg class="i"><use href="#i-phone"/></svg> {{phone}}</a></li>
@@ -340,19 +321,24 @@
 
           <div class="row">
             <label class="field">
-              <span>Telefon oder E-Mail</span>
-              <input name="contact" autocomplete="tel" placeholder="für Rückfragen">
+              <span>E-Mail <span class="req">*</span></span>
+              <input name="email" type="email" required autocomplete="email" placeholder="name@beispiel.de">
             </label>
             <label class="field">
-              <span>Wunschzeitraum</span>
-              <select name="timing">
-                <option>So bald wie möglich</option>
-                <option>In den nächsten 4 Wochen</option>
-                <option>In 1–3 Monaten</option>
-                <option>Flexibel</option>
-              </select>
+              <span>Telefon</span>
+              <input name="phone" type="tel" autocomplete="tel" placeholder="optional, für Rückfragen">
             </label>
           </div>
+
+          <label class="field">
+            <span>Wunschzeitraum</span>
+            <select name="timing">
+              <option>So bald wie möglich</option>
+              <option>In den nächsten 4 Wochen</option>
+              <option>In 1–3 Monaten</option>
+              <option>Flexibel</option>
+            </select>
+          </label>
 
           <label class="field">
             <span>Nachricht</span>
@@ -366,12 +352,11 @@
           </div>
 
           <div class="form-actions">
-            <button class="btn btn-wa" type="submit" value="whatsapp" data-submit-wa><svg class="i"><use href="#i-wa"/></svg> Per WhatsApp senden</button>
-            <button class="btn btn-light-ghost" type="submit" value="email" data-submit-mail><svg class="i"><use href="#i-mail"/></svg> Per E-Mail senden</button>
+            <button class="btn btn-nav" type="submit"><svg class="i"><use href="#i-mail"/></svg> Anfrage absenden</button>
           </div>
           <p class="form-status" role="status" aria-live="polite"></p>
-          <input class="hp" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <p class="form-note"><span data-form-note>Ihre Angaben landen direkt als Nachricht in WhatsApp oder Ihrem E-Mail-Programm – Sie können vor dem Absenden alles prüfen und Fotos anhängen.</span> Mehr in der <a href="/datenschutz.html">Datenschutzerklärung</a>.</p>
+          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <p class="form-note">Wir antworten per E-Mail oder rufen Sie an. Fotos können Sie uns danach gern per WhatsApp oder als Antwort auf unsere E-Mail schicken. Mehr in der <a href="/datenschutz.html">Datenschutzerklärung</a>.</p>
         </form>
       </div>
     </section>
@@ -391,9 +376,5 @@
     </div>
   </footer>
 
-  <div class="mobile-cta">
-    <a class="btn btn-wa" href="{{whatsappUrl}}" target="_blank" rel="noopener" data-wa><svg class="i"><use href="#i-wa"/></svg> WhatsApp</a>
-    <a class="btn btn-primary" href="{{tel}}"><svg class="i"><use href="#i-phone"/></svg> Anrufen</a>
-  </div>
 </body>
 </html>

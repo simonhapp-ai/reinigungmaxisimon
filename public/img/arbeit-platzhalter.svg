@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 700" preserveAspectRatio="xMidYMid slice">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#dcebf6"/><stop offset="1" stop-color="#a9c8df"/></linearGradient></defs>
+<rect width="1600" height="700" fill="url(#bg)"/>
+<g fill="#8fb1c9">
+  <path d="M900 700V330l230-170 230 170v370z"/>
+  <rect x="960" y="400" width="90" height="110" rx="6" fill="#dcebf6"/><rect x="1210" y="400" width="90" height="110" rx="6" fill="#dcebf6"/>
+  <rect x="1085" y="560" width="90" height="140" rx="6" fill="#7aa0bb"/>
+</g>
+<g fill="#7aa0bb"><circle cx="760" cy="420" r="52"/><path d="M660 700c0-140 45-205 100-205s100 65 100 205z"/></g>
+<path d="M800 470l150-120" stroke="#0d2230" stroke-width="10" stroke-linecap="round" opacity=".45"/>
+<path d="M930 330l45 40" stroke="#0d2230" stroke-width="16" stroke-linecap="round" opacity=".45"/>
+<g transform="translate(1470 110)" fill="none" stroke="#0d2230" stroke-width="7" stroke-linejoin="round" opacity=".55">
+  <rect x="-60" y="-34" width="120" height="84" rx="14"/><circle cx="0" cy="8" r="24"/><path d="M-26 -34 l10 -18 h32 l10 18"/>
+</g>
+<text x="90" y="130" font-family="Manrope, system-ui, sans-serif" font-size="52" font-weight="800" fill="#0d2230" opacity=".7">Foto beim Arbeiten</text>
+<text x="90" y="190" font-family="Manrope, system-ui, sans-serif" font-size="32" fill="#0d2230" opacity=".55">z. B. ihr beim Fensterputzen oder mit dem Flächenreiniger</text>
+</svg>

@@ -6,7 +6,8 @@ Alles mit ⭐ sollte vor dem Livegang bzw. vor dem Flyerdruck erledigt sein.
 
 | # | Motiv | Wofür | Tipps |
 |---|-------|-------|-------|
-| ⭐1 | **Einfahrt / Pflaster – vorher & nachher** | Startseite oben + Flyer-Vorderseite | Exakt gleicher Standpunkt und Winkel (Stelle mit Kreide/Tape markieren), Querformat, gleiches Licht. Möglichst stark vermoost vorher. |
+| ⭐1 | **Foto beim Arbeiten** (Querformat) | Ganz oben auf der Startseite | Ihr beim Fensterputzen oder mit dem Flächenreiniger. Wird sehr breit gezeigt – genug Rand rundherum lassen. |
+| ⭐1b | **Einfahrt / Pflaster – vorher & nachher** | Flyer-Vorderseite | Exakt gleicher Standpunkt und Winkel (Stelle mit Kreide/Tape markieren), Querformat, gleiches Licht. Möglichst stark vermoost vorher. |
 | ⭐2 | **Teamfoto: Maxi und Simon** | „Über uns“ | Querformat 4:3, Tageslicht, einheitliche Kleidung, gern mit Equipment/Auto. |
 | 3 | **Fenster – vorher & nachher** | Vorher/Nachher-Bereich | Schräg gegen das Licht fotografieren, dann sieht man Schlieren und Kalk. Querformat. |
 | 4 | **Terrasse – vorher & nachher** | Vorher/Nachher-Bereich | Wie bei der Einfahrt. Halb gereinigte Fläche wirkt besonders gut. |
@@ -20,11 +21,11 @@ Handy-Originale schicken (nicht über WhatsApp, das komprimiert). Hauptkamera mi
 - ⭐ Vollständige Namen von Maxi und Simon
 - ⭐ Anschrift der GbR – sie ist öffentlich sichtbar
 - Nach Gewerbeanmeldung: Steuernummer/USt-Hinweis, Handwerkskammer-Eintragung
-- Kleinunternehmer nach § 19 UStG? Dann ändern wir „Alle Preise sind Endpreise“ entsprechend.
+- Kleinunternehmer nach § 19 UStG? Dann ergänzen wir den Pflichthinweis.
 
 ## 3. Preise & Leistungen
 
-- 5 € pro Standardfenster: innen **und** außen, oder pro Seite?
+- 4 € pro Standardfenster: innen **und** außen, oder pro Seite?
 - Gilt eine Terrassentür als Standardfenster?
 - Mindestauftragswert oder Anfahrtspauschale?
 - Bietet ihr Wintergärten, Glasgeländer und Vordächer an? Bis zu welcher Höhe?

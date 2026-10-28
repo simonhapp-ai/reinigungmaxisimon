@@ -18,7 +18,7 @@ Website **und** Flyer lesen von dort. Werte mit `XXX` sind Platzhalter – solan
 
 - **WhatsApp-Nummer**: international ohne `+` und ohne führende 0 (`0176 35629220` → `4917635629220`)
 - **Instagram**: solange `instagram` leer ist, sind alle Instagram-Links ausgeblendet. Handle eintragen → sie erscheinen automatisch.
-- **Preise**: Nur Standardfenster haben einen festen Preis (`perWindow`). Alles andere steht als „nach Absprache“ auf der Seite. Der Flyer enthält bewusst keine Preise.
+- **Preise**: Nur Standardfenster haben einen festen Preis (`perWindow`, steht bei den Leistungen und in den FAQ). Alles andere ist „nach Absprache“. Der Flyer enthält bewusst keine Preise.
 
 ## Bilder austauschen
 
@@ -26,8 +26,16 @@ Fotos in `public/img/` ablegen und in `src/config.ts` unter `images` den Dateina
 
 ## Formular
 
-Das Formular braucht keinen Server: Es baut aus den Angaben eine fertige Nachricht und öffnet damit WhatsApp oder das E-Mail-Programm des Kunden. Er kann dann direkt Fotos anhängen.
-Wer später einen Formular-Dienst nutzen will (z. B. Formspree), trägt dessen URL bei `formEndpoint` ein.
+Das Anfrageformular schickt die Anfrage direkt per E-Mail an euer Gmail-Postfach – über die Vercel-Funktion `api/anfrage.ts` (das Gegenstück zu einem PHP-Formular). In Gmail auf „Antworten“ klicken schreibt direkt an den Kunden.
+Falls der Versand einmal scheitert, bekommt der Kunde einen fertigen WhatsApp-Link mit seiner Anfrage angezeigt.
+
+**Einmalig einrichten:**
+1. Im Google-Konto von `reinigungmaxisimon@gmail.com` die **Bestätigung in zwei Schritten** aktivieren.
+2. Unter [myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords) ein **App-Passwort** erstellen (Name z. B. „Website“). Google zeigt ein 16-stelliges Passwort an.
+3. In Vercel unter *Settings → Environment Variables* zwei Variablen anlegen:
+   - `GMAIL_USER` = `reinigungmaxisimon@gmail.com`
+   - `GMAIL_APP_PASSWORD` = das 16-stellige App-Passwort
+4. Unter *Deployments* das neueste Deployment **Redeploy** klicken, damit die Variablen greifen.
 
 ## Flyer drucken
 
