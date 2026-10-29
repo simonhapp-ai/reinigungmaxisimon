@@ -5,12 +5,16 @@ import { htmlTokens } from './src/config.ts'
 function siteTokens(): Plugin {
   return {
     name: 'site-tokens',
-    transformIndexHtml(html, ctx) {
-      const tokens = htmlTokens()
-      return html.replace(/\{\{\s*(\w+)\s*\}\}/g, (_, key: string) => {
-        if (!(key in tokens)) throw new Error(`Unbekannter Platzhalter {{${key}}} in ${ctx.path}`)
-        return tokens[key]
-      })
+    // 'pre': vor Vites HTML-Verarbeitung ersetzen, damit Bilder außerhalb von public/ (z. B. flyer/team.jpg) mitgebaut werden.
+    transformIndexHtml: {
+      order: 'pre',
+      handler(html, ctx) {
+        const tokens = htmlTokens()
+        return html.replace(/\{\{\s*(\w+)\s*\}\}/g, (_, key: string) => {
+          if (!(key in tokens)) throw new Error(`Unbekannter Platzhalter {{${key}}} in ${ctx.path}`)
+          return tokens[key]
+        })
+      },
     },
   }
 }

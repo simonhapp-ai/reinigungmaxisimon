@@ -39,7 +39,11 @@ Falls der Versand einmal scheitert, bekommt der Kunde einen fertigen WhatsApp-Li
 
 ## Flyer drucken
 
-`flyer/flyer-a5.pdf` hat 154 × 216 mm = DIN A5 plus 3 mm Beschnitt rundum, wie es Online-Druckereien verlangen. Beide QR-Codes führen zur Website. Die gestrichelte Linie in der Browser-Vorschau zeigt die Schnittkante und erscheint nicht im PDF.
+Es gibt zwei Flyer, beide 154 × 216 mm = DIN A5 plus 3 mm Beschnitt rundum, wie es Online-Druckereien verlangen:
+- `flyer/flyer-a5.pdf` – Vorder- und Rückseite (Vorschau: `/flyer/`)
+- `flyer/flyer-a5-einseitig.pdf` – nur eine Seite mit großem Foto (Vorschau: `/flyer/einseitig.html`). Das Foto ist `images.flyerPhoto` in `src/config.ts`.
+
+Alle QR-Codes führen zur Website. Die gestrichelte Linie in der Browser-Vorschau zeigt die Schnittkante und erscheint nicht im PDF.
 **Vor dem Druck:** QR-Code mit dem Handy testen – erst sinnvoll, wenn die Website unter der Domain erreichbar ist.
 
 ## Hosting bei Vercel

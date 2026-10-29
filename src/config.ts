@@ -39,6 +39,7 @@ export const config = {
     terraceBefore: '/img/terrasse-vorher.jpg',
     terraceAfter: '/img/terrasse-nachher.jpg',
     team: '/img/team-platzhalter.svg',
+    flyerPhoto: '/flyer/team.jpg', // einseitiger Flyer – liegt bewusst in flyer/, damit es nicht mit der Website online geht
   },
 
   flyer: {
@@ -94,6 +95,7 @@ export function htmlTokens(): Record<string, string> {
     responseTime: config.responseTime,
     windowPrice: euro(config.prices.perWindow),
     districts: config.areas.flatMap((a) => a.districts).join(', '),
+    regions: config.areas.map((a) => a.region).join(', '),
     areasHtml: config.areas
       .map(
         (a) =>

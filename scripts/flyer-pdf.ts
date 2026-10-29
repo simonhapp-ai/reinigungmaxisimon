@@ -1,5 +1,5 @@
 /**
- * Erzeugt flyer/flyer-a5.pdf (154 × 216 mm inkl. 3 mm Beschnitt) – druckfertig für Online-Druckereien.
+ * Erzeugt flyer/flyer-a5.pdf und flyer/flyer-a5-einseitig.pdf (154 × 216 mm inkl. 3 mm Beschnitt) – druckfertig für Online-Druckereien.
  * Aufruf: npm run flyer:pdf   (optional: CHROME_PATH=/pfad/zu/chrome)
  */
 import { execFile } from 'node:child_process'
@@ -32,29 +32,38 @@ function findChrome(): string {
 const missing = placeholders()
 if (missing.length) console.warn(`⚠️  Noch Platzhalter in src/config.ts: ${missing.join(', ')}\n`)
 
-const out = resolve('flyer/flyer-a5.pdf')
+const flyers = [
+  { page: 'flyer/index.html', pdf: 'flyer/flyer-a5.pdf' }, // Vorder- und Rückseite
+  { page: 'flyer/einseitig.html', pdf: 'flyer/flyer-a5-einseitig.pdf' },
+]
 const outDir = '.flyer-build'
 const port = 5199
 
 // Statischer Build statt Dev-Server: ohne Live-Reload-Verbindung druckt Chrome zuverlässig.
-await build({ logLevel: 'error', build: { outDir, emptyOutDir: true, rollupOptions: { input: 'flyer/index.html' } } })
+// Als Objekt, weil Vite es mit den Website-Seiten aus vite.config.ts zusammenführt (die werden einfach mitgebaut).
+const input = Object.fromEntries(flyers.map((f) => [f.pdf, f.page]))
+await build({ logLevel: 'error', build: { outDir, emptyOutDir: true, rollupOptions: { input } } })
 const server = await preview({ logLevel: 'error', build: { outDir }, preview: { port, strictPort: true } })
 
 try {
-  // Asynchron starten – der Vorschau-Server läuft im selben Prozess und muss währenddessen antworten können.
-  await promisify(execFile)(
-    findChrome(),
-    [
-      '--headless',
-      '--disable-gpu',
-      '--no-pdf-header-footer',
-      '--virtual-time-budget=5000',
-      `--print-to-pdf=${out}`,
-      `http://localhost:${port}/flyer/index.html`,
-    ],
-    { timeout: 60_000 },
-  )
-  console.log(`✅ Flyer gespeichert: ${out}`)
+  const chrome = findChrome()
+  for (const { page, pdf } of flyers) {
+    const out = resolve(pdf)
+    // Asynchron starten – der Vorschau-Server läuft im selben Prozess und muss währenddessen antworten können.
+    await promisify(execFile)(
+      chrome,
+      [
+        '--headless',
+        '--disable-gpu',
+        '--no-pdf-header-footer',
+        '--virtual-time-budget=5000',
+        `--print-to-pdf=${out}`,
+        `http://localhost:${port}/${page}`,
+      ],
+      { timeout: 60_000 },
+    )
+    console.log(`✅ Flyer gespeichert: ${out}`)
+  }
 } finally {
   await server.close()
 }
