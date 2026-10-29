@@ -39,7 +39,7 @@ export const config = {
     terraceBefore: '/img/terrasse-vorher.jpg',
     terraceAfter: '/img/terrasse-nachher.jpg',
     team: '/img/team-platzhalter.svg',
-    flyerPhoto: '/flyer/team.jpg', // einseitiger Flyer – liegt bewusst in flyer/, damit es nicht mit der Website online geht
+    flyerPhoto: '/flyer/foto-haupt.jpg', // einseitiger Flyer – liegt bewusst in flyer/, damit es nicht mit der Website online geht
   },
 
   flyer: {
