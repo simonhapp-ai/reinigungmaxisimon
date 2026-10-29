@@ -1,5 +1,5 @@
 /**
- * Erzeugt flyer/flyer-a5.pdf und flyer/flyer-a5-einseitig.pdf (154 × 216 mm inkl. 3 mm Beschnitt) – druckfertig für Online-Druckereien.
+ * Erzeugt die Flyer-PDFs in flyer/: A5 mit 3 mm Beschnitt für Online-Druckereien und einen A4-Bogen zum Selbstdrucken.
  * Aufruf: npm run flyer:pdf   (optional: CHROME_PATH=/pfad/zu/chrome)
  */
 import { execFile } from 'node:child_process'
@@ -35,6 +35,7 @@ if (missing.length) console.warn(`⚠️  Noch Platzhalter in src/config.ts: ${m
 const flyers = [
   { page: 'flyer/index.html', pdf: 'flyer/flyer-a5.pdf' }, // Vorder- und Rückseite
   { page: 'flyer/einseitig.html', pdf: 'flyer/flyer-a5-einseitig.pdf' },
+  { page: 'flyer/a4-druckbogen.html', pdf: 'flyer/flyer-a4-2x-einseitig.pdf' }, // zum Selbstdrucken auf A4
 ]
 const outDir = '.flyer-build'
 const port = 5199

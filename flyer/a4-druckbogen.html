@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Druckbogen A4 – 2 × Flyer A5 – {{name}}</title>
+  <style>
+    /* A4 quer = zwei A5-Flyer hochkant nebeneinander. Der 3-mm-Beschnitt wird abgeschnitten,
+       in der Mitte trennen. */
+    @page { size: 297mm 210mm; margin: 0; }
+    html, body { margin: 0; }
+    .sheet { width: 297mm; height: 210mm; display: flex; justify-content: center; }
+    .copy { position: relative; width: 148mm; height: 210mm; overflow: hidden; }
+    .copy iframe { position: absolute; left: -3mm; top: -3mm; width: 154mm; height: 216mm; border: 0; }
+
+    @media screen {
+      body { background: #7d8a92; padding: 10mm 0; display: flex; justify-content: center; }
+      .sheet { background: #fff; box-shadow: 0 10px 40px rgb(0 0 0 / 0.35); }
+      .copy + .copy { box-shadow: -0.3mm 0 0 rgb(255 0 128 / 0.7); } /* Schnittlinie in der Vorschau */
+    }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <div class="copy"><iframe src="/flyer/einseitig.html" title="Flyer A5"></iframe></div>
+    <div class="copy"><iframe src="/flyer/einseitig.html" title="Flyer A5"></iframe></div>
+  </div>
+</body>
+</html>

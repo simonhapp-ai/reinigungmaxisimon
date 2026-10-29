@@ -35,11 +35,11 @@ p, h1, h2, h3, ul, ol { margin: 0; }
 }
 .page:last-child { break-after: auto; }
 
-/* Bildschirm-Vorschau: Seiten nebeneinander, Schnittkante gestrichelt */
+/* Bildschirm-Vorschau: Seiten nebeneinander, Schnittkante gestrichelt (nicht im A4-Druckbogen) */
 @media screen {
-  body { background: #7d8a92; padding: 10mm 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 10mm; }
-  .page { box-shadow: 0 10px 40px rgb(0 0 0 / 0.35); }
-  .page::after {
+  html:not(.embedded) body { background: #7d8a92; padding: 10mm 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 10mm; }
+  html:not(.embedded) .page { box-shadow: 0 10px 40px rgb(0 0 0 / 0.35); }
+  html:not(.embedded) .page::after {
     content: ''; position: absolute; inset: var(--bleed); z-index: 10;
     border: 0.3mm dashed rgb(255 0 128 / 0.7); pointer-events: none;
   }

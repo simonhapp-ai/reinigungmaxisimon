@@ -43,6 +43,8 @@ Es gibt zwei Flyer, beide 154 × 216 mm = DIN A5 plus 3 mm Beschnitt rundum, wie
 - `flyer/flyer-a5.pdf` – Vorder- und Rückseite (Vorschau: `/flyer/`)
 - `flyer/flyer-a5-einseitig.pdf` – nur eine Seite mit großem Foto und vier Leistungs-Kreisen (Vorschau: `/flyer/einseitig.html`). Das große Foto ist `images.flyerPhoto` in `src/config.ts`, die Kreisbilder sind `flyer/kreis-*.jpg`.
 
+Zum Selbstdrucken: `flyer/flyer-a4-2x-einseitig.pdf` – A4 quer mit dem einseitigen Flyer zweimal nebeneinander (ohne Beschnitt). Mit „Tatsächliche Größe“ bzw. 100 % drucken und in der Mitte schneiden.
+
 Alle QR-Codes führen zur Website. Die gestrichelte Linie in der Browser-Vorschau zeigt die Schnittkante und erscheint nicht im PDF.
 **Vor dem Druck:** QR-Code mit dem Handy testen – erst sinnvoll, wenn die Website unter der Domain erreichbar ist.
 
