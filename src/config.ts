@@ -5,8 +5,8 @@
  */
 
 export const config = {
-  name: 'MaxiSimon Reinigung',
-  legalName: 'MaxiSimon Reinigung GbR',
+  name: 'Reinigung Maxi Simon',
+  legalName: 'Reinigung Maxi Simon GbR',
   tagline: 'Fenster- & Außenflächenreinigung in Hamburg',
   founders: ['Maxi', 'Simon'],
   foundersFull: 'Maxi XXX und Simon XXX', // vollständige Namen fürs Impressum

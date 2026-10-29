@@ -9,25 +9,24 @@
 }
 
 /* Das Foto ist 906 × 539 px groß und wird in voller Breite gezeigt (0,17 mm pro Pixel).
-   Welle und Markenecke liegen genau über den Stellen, die abgedeckt werden müssen. */
+   Die Welle liegt genau über der Stelle, die abgedeckt werden muss. */
 .photo {
   position: absolute; top: 0; left: 0;
   width: 154mm; height: 91.6mm;
   object-fit: cover;
 }
 
+/* Hängt in der Ecke und läuft in den Beschnitt – nach dem Schneiden ringsum ca. 5 mm Weißraum */
 .brand-tab {
   position: absolute; top: 0; right: 0;
-  width: 53mm; height: 46mm;
-  padding: 8.5mm var(--safe) 0 5mm;
+  padding: 7.5mm 9mm 4.5mm 6mm;
   display: flex; flex-direction: column; align-items: center; text-align: center;
   background: #fff; color: var(--ink);
-  border-bottom-left-radius: 8mm;
+  border-bottom-left-radius: 6mm;
 }
-.brand-tab img { width: 11mm; height: 11mm; }
-.brand-tab strong { margin-top: 1.5mm; font-size: 15pt; font-weight: 800; line-height: 1; letter-spacing: -0.03em; }
-.brand-tab strong span { display: block; color: var(--accent); }
-.brand-tab small { margin-top: 1.8mm; font-size: 6.2pt; font-weight: 700; color: var(--muted); }
+.brand-tab img { width: 9mm; height: 9mm; }
+.brand-tab strong { margin-top: 1.2mm; font-size: 13pt; font-weight: 800; line-height: 1.02; letter-spacing: -0.03em; }
+.brand-tab strong span { display: block; font-size: 10pt; color: var(--accent); }
 
 /* ---------- Welle ---------- */
 .wave { position: absolute; left: 0; top: 66mm; width: 100%; height: 150mm; } /* bis zur Unterkante, sonst zeigt das PDF eine feine Naht */

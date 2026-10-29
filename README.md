@@ -1,4 +1,4 @@
-# MaxiSimon Reinigung – Website & Flyer
+# Reinigung Maxi Simon – Website & Flyer
 
 Website für [reinigungmaxisimon.de](https://reinigungmaxisimon.de) (Vite + TypeScript, ohne Framework) und druckfertiger A5-Flyer für die Fenster- und Außenflächenreinigung in Hamburg.
 
