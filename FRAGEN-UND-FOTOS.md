@@ -6,7 +6,7 @@ Alles mit ⭐ sollte vor dem Livegang bzw. vor dem Flyerdruck erledigt sein.
 
 | # | Motiv | Wofür | Tipps |
 |---|-------|-------|-------|
-| ✅1 | **Foto beim Arbeiten** | Ganz oben auf der Startseite | Erledigt – steht im Hochformat neben der Überschrift. |
+| ✅1 | **Foto beim Arbeiten** | Ganz oben auf der Startseite | Erledigt – steht quadratisch neben der Überschrift. |
 | ⭐1b | **Einfahrt / Pflaster – vorher & nachher** | Flyer-Vorderseite | Exakt gleicher Standpunkt und Winkel (Stelle mit Kreide/Tape markieren), Querformat, gleiches Licht. Möglichst stark vermoost vorher. |
 | ✅2 | **Teamfoto: Maxi und Simon** | „Über uns“ | Erledigt – ist auf der Website. |
 | 3 | **Fenster – vorher & nachher** | Vorher/Nachher-Bereich (zurzeit ausgeblendet) | Schräg gegen das Licht fotografieren, dann sieht man Schlieren und Kalk. Querformat. |
