@@ -8,7 +8,7 @@ Alles mit ⭐ sollte vor dem Livegang bzw. vor dem Flyerdruck erledigt sein.
 |---|-------|-------|-------|
 | ⭐1 | **Foto beim Arbeiten** (Querformat) | Ganz oben auf der Startseite | Ihr beim Fensterputzen oder mit dem Flächenreiniger. Wird sehr breit gezeigt – genug Rand rundherum lassen. |
 | ⭐1b | **Einfahrt / Pflaster – vorher & nachher** | Flyer-Vorderseite | Exakt gleicher Standpunkt und Winkel (Stelle mit Kreide/Tape markieren), Querformat, gleiches Licht. Möglichst stark vermoost vorher. |
-| ⭐2 | **Teamfoto: Maxi und Simon** | „Über uns“ | Querformat 4:3, Tageslicht, einheitliche Kleidung, gern mit Equipment/Auto. |
+| ✅2 | **Teamfoto: Maxi und Simon** | „Über uns“ | Erledigt – ist auf der Website. |
 | 3 | **Fenster – vorher & nachher** | Vorher/Nachher-Bereich | Schräg gegen das Licht fotografieren, dann sieht man Schlieren und Kalk. Querformat. |
 | 4 | **Terrasse – vorher & nachher** | Vorher/Nachher-Bereich | Wie bei der Einfahrt. Halb gereinigte Fläche wirkt besonders gut. |
 | 5 | Equipment- oder Action-Foto | Social Media, Link-Vorschau | Einer von euch beim Arbeiten. |

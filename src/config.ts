@@ -38,7 +38,7 @@ export const config = {
     windowAfter: '/img/fenster-nachher.jpg',
     terraceBefore: '/img/terrasse-vorher.jpg',
     terraceAfter: '/img/terrasse-nachher.jpg',
-    team: '/img/team-platzhalter.svg',
+    team: '/img/team.jpg', // Über uns – Querformat 4:3
     flyerPhoto: '/flyer/foto-haupt.jpg', // einseitiger Flyer – liegt bewusst in flyer/, damit es nicht mit der Website online geht
   },
 
