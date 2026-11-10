@@ -31,7 +31,7 @@ export const config = {
   ],
 
   images: {
-    hero: '/img/arbeit-platzhalter.svg', // Foto beim Arbeiten, am besten Querformat
+    hero: '/img/arbeit.jpg', // Foto beim Arbeiten ganz oben – Hochformat 4:5
     pavingBefore: '/img/pflaster-vorher.jpg', // Flyer-Vorderseite
     pavingAfter: '/img/pflaster-nachher.jpg',
     windowBefore: '/img/fenster-vorher.jpg',
