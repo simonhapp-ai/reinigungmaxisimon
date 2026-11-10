@@ -58,4 +58,4 @@ Alle QR-Codes führen zur Website. Die gestrichelte Linie in der Browser-Vorscha
 
 Jeder Push auf `main` veröffentlicht die Seite danach automatisch neu.
 
-**Vor dem Livegang:** Impressum und Datenschutz vollständig ausfüllen und prüfen lassen – beide Seiten sind nur Muster.
+**Vor dem Livegang:** Im Impressum fehlen noch Namen und Adresse (siehe `FRAGEN-UND-FOTOS.md`). Die Datenschutzerklärung ist ein Muster und sollte geprüft werden.

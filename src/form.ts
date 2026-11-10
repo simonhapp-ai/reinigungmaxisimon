@@ -1,5 +1,6 @@
 import { config, whatsappUrl } from './config.ts'
-import { windowsPrice, type Service } from './estimate.ts'
+
+type Service = 'fenster' | 'pflaster' | 'terrasse' | 'kombi'
 
 /** Vercel-Funktion in api/anfrage.ts – schickt die Anfrage per E-Mail an euer Postfach. */
 const ENDPOINT = '/api/anfrage'
@@ -68,9 +69,6 @@ export function buildMessage(r: Request): string {
 export function initForm(form: HTMLFormElement) {
   const areaField = form.querySelector<HTMLElement>('[data-needs-area]')
   const windowsField = form.querySelector<HTMLElement>('[data-needs-windows]')
-  const estimateBox = form.querySelector<HTMLElement>('[data-estimate]')
-  const estimateValue = form.querySelector<HTMLElement>('[data-estimate-value]')
-  const estimateNote = form.querySelector<HTMLElement>('[data-estimate-note]')
   const serviceError = form.querySelector<HTMLElement>('[data-error-for="service"]')
   const status = form.querySelector<HTMLElement>('.form-status')
   const submit = form.querySelector<HTMLButtonElement>('button[type="submit"]')
@@ -80,20 +78,6 @@ export function initForm(form: HTMLFormElement) {
     if (areaField) areaField.hidden = !needsArea(r)
     if (windowsField) windowsField.hidden = !needsWindows(r)
     if (r.services.length && serviceError) serviceError.hidden = true
-    if (!estimateBox || !estimateValue || !estimateNote) return
-
-    // Nur Standardfenster haben einen festen Preis – Außenflächen werden immer vorher abgesprochen.
-    const windows = needsWindows(r) && r.windows
-    estimateBox.hidden = !windows && !needsArea(r)
-    if (windows) {
-      estimateValue.textContent = `Fenster: ca. ${windowsPrice(windows)}`
-      estimateNote.textContent = needsArea(r)
-        ? 'Außenflächen: Preis nach Absprache – immer vorher fest vereinbart'
-        : `${windows} Standardfenster à ${windowsPrice(1)} – Sonderformen nach Absprache`
-    } else {
-      estimateValue.textContent = 'Preis nach Absprache'
-      estimateNote.textContent = 'Den Festpreis sprechen wir vorher mit Ihnen ab – nach Fotos oder Besichtigung.'
-    }
   }
   form.addEventListener('input', update)
   form.addEventListener('change', update)

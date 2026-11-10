@@ -23,10 +23,13 @@ Handy-Originale schicken (nicht über WhatsApp, das komprimiert). Hauptkamera mi
 
 ## 2. Impressum (Pflicht vor dem Livegang)
 
-- ⭐ Vollständige Namen von Maxi und Simon
-- ⭐ Anschrift der GbR – sie ist öffentlich sichtbar
-- Nach Gewerbeanmeldung: Steuernummer/USt-Hinweis, Handwerkskammer-Eintragung
-- Kleinunternehmer nach § 19 UStG? Dann ergänzen wir den Pflichthinweis.
+Das Impressum ist aufgebaut (`impressum.html`). Die Angaben kommen aus `src/config.ts`; es fehlen nur noch:
+
+- ⭐ Vollständige Vor- und Nachnamen von Maxi und Simon (`foundersFull`)
+- ⭐ Geschäftsadresse der GbR wie in der Gewerbeanmeldung, kein Postfach – sie ist öffentlich sichtbar (`address`)
+- Umsatzsteuer-ID und/oder Wirtschafts-ID, **nur falls vorhanden** (`taxIds`). Ohne Nummer entfällt der Abschnitt. Die normale Steuernummer gehört nicht ins Impressum.
+
+Bewusst nicht drin: Handwerkskammer (Gebäudereiniger ist zulassungsfrei, keine Pflichtangabe), „Verantwortlich nach § 18 MStV“ (nur bei redaktionellen Inhalten wie einem Blog), Link zur EU-Streitschlichtung (Plattform wurde im Juli 2025 abgeschaltet) und der § 19-UStG-Hinweis (gehört auf Rechnungen, nicht ins Impressum).
 
 ## 3. Preise & Leistungen
 

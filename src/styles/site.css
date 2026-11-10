@@ -343,10 +343,6 @@ p { margin: 0 0 1em; }
 .choice input:checked + span { background: #fff; color: var(--ink); border-color: #fff; }
 .choice input:checked + span::before { border-color: var(--wa); background: var(--wa) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4L18 8'/%3E%3C/svg%3E") center / 75% no-repeat; }
 .choice input:focus-visible + span { outline: 3px solid var(--accent); outline-offset: 2px; }
-.estimate { display: grid; gap: 2px; padding: 14px 18px; border-radius: 14px; background: rgb(124 196 245 / 0.12); border: 1px solid rgb(124 196 245 / 0.3); }
-.estimate span { font-size: 0.85rem; color: rgb(255 255 255 / 0.75); font-weight: 600; }
-.estimate strong { font-size: 1.5rem; }
-.estimate small { color: rgb(255 255 255 / 0.6); }
 .form-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 .form-actions .btn { flex: 1 1 200px; }
 .form-status { margin: 0; font-weight: 600; color: #9ff0bd; }

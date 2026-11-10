@@ -9,7 +9,7 @@ export const config = {
   legalName: 'Reinigung Maxi Simon GbR',
   tagline: 'Fenster- & Außenflächenreinigung in Hamburg',
   founders: ['Maxi', 'Simon'],
-  foundersFull: 'Maxi XXX und Simon XXX', // vollständige Namen fürs Impressum
+  foundersFull: 'Maxi XXX und Simon XXX', // vollständige Vor- und Nachnamen fürs Impressum
 
   phone: { display: '0176 35629220', e164: '+4917635629220' },
   whatsapp: '4917635629220', // internationale Schreibweise ohne + und ohne führende 0
@@ -17,7 +17,13 @@ export const config = {
   domain: 'reinigungmaxisimon.de',
   instagram: '', // Handle ohne @ – solange leer, werden alle Instagram-Links ausgeblendet
 
-  address: { street: 'XXX-Straße 1', zip: '22XXX', city: 'Hamburg' },
+  address: { street: 'XXX-Straße 1', zip: '22XXX', city: 'Hamburg' }, // Geschäftsadresse wie in der Gewerbeanmeldung, kein Postfach
+
+  // Fürs Impressum – nur eintragen, falls vorhanden. Leere Felder erscheinen dort nicht.
+  taxIds: {
+    vatId: '', // Umsatzsteuer-Identifikationsnummer, z. B. DE123456789
+    economicId: '', // Wirtschafts-Identifikationsnummer, z. B. DE123456789-00001
+  },
 
   responseTime: '24 Stunden',
 
@@ -102,11 +108,22 @@ export function htmlTokens(): Record<string, string> {
           `<div class="area"><h3>${a.region}</h3><ul class="chips">${a.districts.map((d) => `<li>${d}</li>`).join('')}</ul></div>`,
       )
       .join(''),
+    taxIdsHtml: taxIdsHtml(),
     offerTitle: config.flyer.offerTitle,
     offerText: config.flyer.offerText,
     year: String(new Date().getFullYear()),
     ...Object.fromEntries(Object.entries(config.images).map(([k, v]) => [`img_${k}`, v])),
   }
+}
+
+/** Abschnitt „Steuerliche Angaben“ fürs Impressum – entfällt, solange keine Nummer eingetragen ist. */
+function taxIdsHtml(): string {
+  const { vatId, economicId } = config.taxIds
+  const lines = [
+    vatId && `Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG: ${vatId}`,
+    economicId && `Wirtschafts-Identifikationsnummer gemäß § 139c AO: ${economicId}`,
+  ].filter(Boolean)
+  return lines.length ? `<h2>Steuerliche Angaben</h2>\n    <p>${lines.join('<br>')}</p>` : ''
 }
 
 /** Blendet alles mit [data-instagram] aus, solange kein Instagram-Handle eingetragen ist. */
