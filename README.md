@@ -24,6 +24,8 @@ Website **und** Flyer lesen von dort. Werte mit `XXX` sind Platzhalter – solan
 
 Fotos in `public/img/` ablegen und in `src/config.ts` unter `images` den Dateinamen eintragen. Vorher- und Nachher-Foto eines Paares müssen **dasselbe Seitenverhältnis** haben (am besten 3:2 quer, vom selben Standpunkt).
 
+Der Vorher/Nachher-Bereich der Website ist vorübergehend ausgeblendet, bis echte Fotos da sind – wie er wieder reinkommt, steht in `FRAGEN-UND-FOTOS.md`.
+
 ## Formular
 
 Das Anfrageformular schickt die Anfrage direkt per E-Mail an euer Gmail-Postfach – über die Vercel-Funktion `api/anfrage.ts` (das Gegenstück zu einem PHP-Formular). In Gmail auf „Antworten“ klicken schreibt direkt an den Kunden.
