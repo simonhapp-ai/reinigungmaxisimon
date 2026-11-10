@@ -63,7 +63,7 @@ Jeder Push auf `main` veröffentlicht die Seite danach automatisch neu.
 Hauptadresse ist `https://www.reinigungmaxisimon.de/` (ohne www leitet Vercel dorthin weiter). Darauf zeigen Canonical-Tag, `public/sitemap.xml` und `public/robots.txt`.
 Firmendaten für Google (strukturierte Daten) entstehen beim Build aus `src/config.ts`.
 
-1. [Google Search Console](https://search.google.com/search-console): Property „URL-Präfix“ mit `https://www.reinigungmaxisimon.de/` anlegen, Methode „HTML-Tag“ wählen und den `content`-Wert in `src/config.ts` bei `googleSiteVerification` eintragen, pushen, dann „Bestätigen“.
+1. [Google Search Console](https://search.google.com/search-console): Property „URL-Präfix“ `https://www.reinigungmaxisimon.de/`. Bestätigt über die Datei `public/googlef4137e1165b22c32.html` – **nicht löschen**, sonst verliert ihr den Zugriff.
 2. Dort unter *Sitemaps* `sitemap.xml` einreichen und unter *URL-Prüfung* die Startseite eingeben → „Indexierung beantragen“.
 3. [Google-Unternehmensprofil](https://business.google.com) anlegen, damit ihr in Google Maps und bei „Fensterreinigung Blankenese“ auftaucht.
 
