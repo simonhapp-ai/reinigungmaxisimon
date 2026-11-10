@@ -5,25 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{name}} – Fensterreinigung & Pflasterreinigung in Hamburg</title>
   <meta name="description" content="{{name}} reinigt Fenster, Wintergärten, Einfahrten, Pflaster und Terrassen in Hamburg ({{districts}}). Kostenloses Festpreis-Angebot – einfach Fotos per WhatsApp schicken.">
+  <link rel="canonical" href="{{canonical}}">
+  {{googleVerificationMeta}}
   <meta property="og:title" content="{{name}} – {{tagline}}">
   <meta property="og:description" content="Klare Fenster. Saubere Einfahrten. Festpreis-Angebot per WhatsApp.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="de_DE">
+  <meta property="og:url" content="{{canonical}}">
+  <meta property="og:image" content="{{ogImage}}">
   <meta name="theme-color" content="#0d2230">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "HomeAndConstructionBusiness",
-    "name": "{{name}}",
-    "description": "{{tagline}}",
-    "url": "{{url}}",
-    "telephone": "{{phone}}",
-    "email": "{{email}}",
-    "address": { "@type": "PostalAddress", "streetAddress": "{{street}}", "postalCode": "{{zip}}", "addressLocality": "{{city}}", "addressCountry": "DE" },
-    "areaServed": "{{districts}}"
-  }
-  </script>
+  <script type="application/ld+json">{{jsonLd}}</script>
   <script type="module" src="/src/main.ts"></script>
 </head>
 <body>

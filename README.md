@@ -58,4 +58,13 @@ Alle QR-Codes führen zur Website. Die gestrichelte Linie in der Browser-Vorscha
 
 Jeder Push auf `main` veröffentlicht die Seite danach automatisch neu.
 
+## Bei Google
+
+Hauptadresse ist `https://www.reinigungmaxisimon.de/` (ohne www leitet Vercel dorthin weiter). Darauf zeigen Canonical-Tag, `public/sitemap.xml` und `public/robots.txt`.
+Firmendaten für Google (strukturierte Daten) entstehen beim Build aus `src/config.ts`.
+
+1. [Google Search Console](https://search.google.com/search-console): Property „URL-Präfix“ mit `https://www.reinigungmaxisimon.de/` anlegen, Methode „HTML-Tag“ wählen und den `content`-Wert in `src/config.ts` bei `googleSiteVerification` eintragen, pushen, dann „Bestätigen“.
+2. Dort unter *Sitemaps* `sitemap.xml` einreichen und unter *URL-Prüfung* die Startseite eingeben → „Indexierung beantragen“.
+3. [Google-Unternehmensprofil](https://business.google.com) anlegen, damit ihr in Google Maps und bei „Fensterreinigung Blankenese“ auftaucht.
+
 **Vor dem Livegang:** Im Impressum fehlen noch Namen und Adresse (siehe `FRAGEN-UND-FOTOS.md`). Die Datenschutzerklärung ist ein Muster und sollte geprüft werden.

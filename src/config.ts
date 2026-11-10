@@ -16,6 +16,7 @@ export const config = {
   email: 'reinigungmaxisimon@gmail.com',
   domain: 'reinigungmaxisimon.de',
   instagram: '', // Handle ohne @ – solange leer, werden alle Instagram-Links ausgeblendet
+  googleSiteVerification: '', // Code aus der Google Search Console (Methode „HTML-Tag“, nur der content-Wert)
 
   address: { street: 'XXX-Straße 1', zip: '22XXX', city: 'Hamburg' }, // Geschäftsadresse wie in der Gewerbeanmeldung, kein Postfach
 
@@ -60,6 +61,8 @@ export const euro = (n: number) =>
   new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n)
 
 export const siteUrl = `https://${config.domain}`
+/** Hauptadresse der Website (reinigungmaxisimon.de leitet auf www weiter) – für Google: Canonical, Sitemap, strukturierte Daten. */
+export const canonicalUrl = `https://www.${config.domain}/`
 
 export function whatsappUrl(text?: string): string {
   const base = `https://wa.me/${config.whatsapp}`
@@ -92,6 +95,12 @@ export function htmlTokens(): Record<string, string> {
     mailto: `mailto:${config.email}`,
     domain: config.domain,
     url: siteUrl,
+    canonical: canonicalUrl,
+    ogImage: new URL(config.images.hero, canonicalUrl).href,
+    googleVerificationMeta: config.googleSiteVerification
+      ? `<meta name="google-site-verification" content="${config.googleSiteVerification}">`
+      : '',
+    jsonLd: jsonLd(),
     instagram: `@${igHandle}`,
     instagramUrl: `https://www.instagram.com/${igHandle}/`,
     whatsappUrl: whatsappUrl(defaultWhatsappText),
@@ -114,6 +123,29 @@ export function htmlTokens(): Record<string, string> {
     year: String(new Date().getFullYear()),
     ...Object.fromEntries(Object.entries(config.images).map(([k, v]) => [`img_${k}`, v])),
   }
+}
+
+/** Strukturierte Daten für Google (Firmenname, Kontakt, Einsatzgebiet). Die Straße kommt erst rein, wenn sie keine Platzhalter mehr hat. */
+function jsonLd(): string {
+  const { street, zip, city } = config.address
+  const hasAddress = placeholders(config.address).length === 0
+  return JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'HomeAndConstructionBusiness',
+    name: config.name,
+    description: config.tagline,
+    url: canonicalUrl,
+    image: new URL(config.images.hero, canonicalUrl).href,
+    telephone: config.phone.e164,
+    email: config.email,
+    address: {
+      '@type': 'PostalAddress',
+      ...(hasAddress && { streetAddress: street, postalCode: zip }),
+      addressLocality: city,
+      addressCountry: 'DE',
+    },
+    areaServed: config.areas.flatMap((a) => a.districts).map((name) => ({ '@type': 'Place', name: `${name}, Hamburg` })),
+  })
 }
 
 /** Abschnitt „Steuerliche Angaben“ fürs Impressum – entfällt, solange keine Nummer eingetragen ist. */
