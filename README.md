@@ -67,4 +67,4 @@ Firmendaten für Google (strukturierte Daten) entstehen beim Build aus `src/conf
 2. Dort unter *Sitemaps* `sitemap.xml` einreichen und unter *URL-Prüfung* die Startseite eingeben → „Indexierung beantragen“.
 3. [Google-Unternehmensprofil](https://business.google.com) anlegen, damit ihr in Google Maps und bei „Fensterreinigung Blankenese“ auftaucht.
 
-**Vor dem Livegang:** Im Impressum fehlen noch Namen und Adresse (siehe `FRAGEN-UND-FOTOS.md`). Die Datenschutzerklärung ist ein Muster und sollte geprüft werden.
+**Hinweis:** Das Impressum ist vollständig. Die Datenschutzerklärung ist ein Muster und sollte einmal geprüft werden.

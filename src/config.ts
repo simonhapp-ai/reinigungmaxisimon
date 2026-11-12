@@ -9,7 +9,7 @@ export const config = {
   legalName: 'Reinigung Maxi Simon GbR',
   tagline: 'Fenster- & Außenflächenreinigung in Hamburg',
   founders: ['Maxi', 'Simon'],
-  foundersFull: 'Maxi XXX und Simon XXX', // vollständige Vor- und Nachnamen fürs Impressum
+  foundersFull: 'Maximilian Feldt und Simon Happ', // vollständige Vor- und Nachnamen fürs Impressum
 
   phone: { display: '0176 35629220', e164: '+4917635629220' },
   whatsapp: '4917635629220', // internationale Schreibweise ohne + und ohne führende 0
@@ -18,7 +18,7 @@ export const config = {
   instagram: '', // Handle ohne @ – solange leer, werden alle Instagram-Links ausgeblendet
   googleSiteVerification: '', // Code aus der Google Search Console (Methode „HTML-Tag“, nur der content-Wert)
 
-  address: { street: 'XXX-Straße 1', zip: '22XXX', city: 'Hamburg' }, // Geschäftsadresse wie in der Gewerbeanmeldung, kein Postfach
+  address: { street: 'Kalckreuthweg 89', zip: '22607', city: 'Hamburg' }, // Geschäftsadresse wie in der Gewerbeanmeldung, kein Postfach
 
   // Fürs Impressum – nur eintragen, falls vorhanden. Leere Felder erscheinen dort nicht.
   taxIds: {
