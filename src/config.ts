@@ -38,7 +38,7 @@ export const config = {
   ],
 
   images: {
-    hero: '/img/arbeit.jpg', // Foto beim Arbeiten ganz oben – quadratisch, Gesichter mittig
+    hero: '/img/arbeit.jpg', // Foto beim Arbeiten ganz oben – quadratisch, Köpfe knapp unter dem oberen Rand
     pavingBefore: '/img/pflaster-vorher.jpg', // Flyer-Vorderseite
     pavingAfter: '/img/pflaster-nachher.jpg',
     windowBefore: '/img/fenster-vorher.jpg',
